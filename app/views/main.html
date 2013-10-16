@@ -1,9 +1,8 @@
-<div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
-  <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-  </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
-</div>
+<ul class="grid-bookmarks">
+	<li ng-repeat="thing in things">
+		<a href="{{thing.url}}"><img src="images/shim.png" alt="{{thing.title}}"/></a>
+		<ul>
+			<li ng-repeat="link in thing.links"><a href="{{link.url}}">{{link.title}}</a></li>
+		</ul>
+	</li>
+</ul>

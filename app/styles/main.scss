@@ -1,25 +1,70 @@
-html, body {
-  margin: 20px;
-}
-
 body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+	background: #111;
+	color: #999;
+	font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
 }
 
-.hero-unit {
-    margin: 50px auto 0 auto;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
+$mobile-max-width:767px;
+$wide-min-width:1200px;
+
+a {
+	color: #9f0;
+
+	&:hover {
+		color: #bf5;
+	}
 }
 
-.hero-unit h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+.grid-bookmarks {
+	$line-height: 2em;
+
+	list-style:none;
+	margin:0;
+
+	> li {
+		float:left;
+		padding-bottom:1em;
+
+		width:percentage(9/50);
+		margin-right:percentage(1/50);
+
+		@media(min-width:$wide-min-width) {
+			width:percentage(9/70);
+			margin-right:percentage(1/70);
+		}
+		@media(max-width:$mobile-max-width) {
+			width:percentage(9/30);
+			margin-right:percentage(1/30);
+		}
+		@media(max-width:479px) {
+			width:percentage(9/20);
+			margin-right:percentage(1/20);
+		}
+
+		> a {
+			display:block;
+		}
+		img {
+			width:100%;
+		}
+		ul {
+			list-style:none;
+			margin:0;
+			text-align:center;
+			height:$line-height;
+		}
+		li {
+			display:inline;
+			line-height:$line-height;
+
+			&:before {
+				content:" | ";
+			}
+			&:first-child:before {
+				content:"";
+			}
+			a {
+			}
+		}
+	}
 }
