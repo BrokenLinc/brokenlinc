@@ -19,7 +19,8 @@ module.exports = function (grunt) {
   // configurable paths
   var yeomanConfig = {
     app: 'app',
-    dist: 'heroku/public'
+    host: 'host',
+    dist: 'host/public'
   };
 
   try {
@@ -282,6 +283,13 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>/images',
           src: [
             'generated/*'
+          ]
+        }, {
+          expand: true,
+          cwd: 'host_config',
+          dest: '<%= yeoman.host %>',
+          src: [
+            '*'
           ]
         }]
       },
