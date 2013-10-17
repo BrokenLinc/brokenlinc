@@ -2,6 +2,10 @@ $mobile-max-width:767px;
 $desktop-min-width:980px;
 $wide-min-width:1200px;
 
+@-ms-viewport{
+	width: auto;
+}
+
 body {
 	background: #111;
 	color: #999;
