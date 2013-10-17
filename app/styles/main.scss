@@ -1,11 +1,16 @@
+$mobile-max-width:767px;
+$desktop-min-width:980px;
+$wide-min-width:1200px;
+
 body {
 	background: #111;
 	color: #999;
 	font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
-}
 
-$mobile-max-width:767px;
-$wide-min-width:1200px;
+	@media(min-width:$desktop-min-width) {
+		padding-top:80px;
+	}
+}
 
 a {
 	color: #9f0;
@@ -43,9 +48,16 @@ a {
 
 		> a {
 			display:block;
+
+			&:hover img {
+				border-color:#9f0;
+			}
 		}
 		img {
 			width:100%;
+			border-radius: 4px;
+			border: 2px solid transparent;
+			border-bottom-color: #333;
 		}
 		ul {
 			list-style:none;

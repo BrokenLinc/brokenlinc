@@ -1,6 +1,6 @@
 <ul class="grid-bookmarks">
 	<li ng-repeat="thing in things">
-		<a href="{{thing.url}}"><img src="images/shim.png" alt="{{thing.title}}"/></a>
+		<a href="{{thing.url}}"><img src="images/logos/{{thing.key}}.png" alt="{{thing.title}}"/></a>
 		<ul>
 			<li ng-repeat="link in thing.links"><a href="{{link.url}}">{{link.title}}</a></li>
 		</ul>
