@@ -1,6 +1,12 @@
 {
   "name": "brokenlinc",
   "version": "0.0.0",
+  "description": "My personal web site.",
+  "repository" :
+  {
+    "type" : "git"
+    , "url" : "http://github.com/landerson352/brokenlinc.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",

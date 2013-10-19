@@ -1,6 +1,14 @@
-$mobile-max-width:767px;
+@import "compass";
+
+$phone-ls-max-width:479px;
+$tablet-p-max-width:767px;
+$tablet-ls-max-width:979px;
 $desktop-min-width:980px;
 $wide-min-width:1200px;
+
+$foreground:white;
+$accent:#8c0;
+$accent-highlight:#bf5;
 
 @-ms-viewport{
 	width: auto;
@@ -11,16 +19,59 @@ body {
 	color: #999;
 	font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
 
+	padding-bottom:100%;
+
 	@media(min-width:$desktop-min-width) {
 		padding-top:80px;
 	}
 }
 
 a {
-	color: #9f0;
+	color: $accent;
 
 	&:hover {
-		color: #bf5;
+		color: $accent-highlight;
+	}
+}
+
+header .navbar {
+	.nav {
+		margin-top: 20px;
+
+		@media(max-width:479px) {
+			margin-top:10px;
+		}
+	}
+	.brand {
+		height:60px;
+		width:60px;
+		margin-left:5px;
+		padding-left:0;
+
+		@media(max-width:$tablet-ls-max-width) {
+			height:30px;
+			width:30px;
+			margin-left:10px;
+		}
+
+		.glyph {
+			height:100%;
+		}
+
+		span {
+			display:none;
+		}
+	}
+}
+
+svg {
+	width:100%;
+	height:100%;
+	.fill-foreground {
+		fill:white;
+	}
+	.fill-accent {
+		fill:$accent;
 	}
 }
 
@@ -38,14 +89,14 @@ a {
 		margin-right:percentage(1/50);
 
 		@media(min-width:$wide-min-width) {
-			width:percentage(9/70);
-			margin-right:percentage(1/70);
+			width:percentage(9/60);
+			margin-right:percentage(1/60);
 		}
-		@media(max-width:$mobile-max-width) {
+		@media(max-width:$tablet-p-max-width) {
 			width:percentage(9/30);
 			margin-right:percentage(1/30);
 		}
-		@media(max-width:479px) {
+		@media(max-width:$phone-ls-max-width) {
 			width:percentage(9/20);
 			margin-right:percentage(1/20);
 		}
@@ -54,12 +105,12 @@ a {
 			display:block;
 
 			&:hover img {
-				border-color:#9f0;
+				border-color:$accent;
 			}
 		}
 		img {
 			width:100%;
-			border-radius: 4px;
+			@include border-radius(4px);
 			border: 2px solid transparent;
 			border-bottom-color: #333;
 		}
@@ -82,5 +133,23 @@ a {
 			a {
 			}
 		}
+	}
+}
+
+.pin-helper {
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:#333;
+
+	.glyph {
+		height:100%;
+
+		/*.group-bl > g {
+			@include scale(0.6);
+			@include transform-origin(72.5px, 60px);
+		}*/
 	}
 }
