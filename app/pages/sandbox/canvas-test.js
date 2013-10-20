@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('brokenlincApp')
-	.controller('pages.sandbox.canvas-test', function ($scope) {
+	.controller('pages/sandbox/canvas-test', function ($scope) {
 		
 		var game_loop = function() {
 			if($scope.drawingContext) draw($scope.drawingContext);
