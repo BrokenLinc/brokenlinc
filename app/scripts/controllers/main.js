@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('brokenlincApp')
-	.controller('MainCtrl', function ($scope) {
+	.controller('pages.main', function ($scope) {
 		$scope.things = [{
 			title:'Bootstrap',
 			url:'http://www.getbootstrap.com/',
