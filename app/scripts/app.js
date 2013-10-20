@@ -17,11 +17,11 @@ angular.module('brokenlincApp', ['ngResource', 'ui', 'ui.bootstrap', 'landerson3
 
 		$routeProvider
 			.when('/', {
-				templateUrl: 'views/main.html',
+				templateUrl: 'pages/main.html',
 				controller: 'pages.main'
 			})
 			.when('/canvas-test', {
-				templateUrl: 'views/canvas-test.html',
+				templateUrl: 'pages/canvas-test.html',
 				controller: 'pages.sandbox.canvas-test'
 			})
 			.otherwise({

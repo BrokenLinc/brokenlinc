@@ -39,7 +39,7 @@
 							<span class="icon-bar"></span>
 						</button>
 						<a class="brand" href="./index.html">
-							<div ng-include="'views/logo-glyph.html'"></div> 
+							<div ng-include="'partials/logo-glyph.html'"></div> 
 							<span>brokenLinc</span>
 						</a>
 						<div class="nav-collapse" collapse="!isOpen">
@@ -51,7 +51,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="pin-helper" ng-include="'views/pin-helper.html'" ui-toggle="isPinning" ng-click="isPinning = !isPinning"></div> 
+				<div class="pin-helper" ng-include="'partials/pin-helper.html'" ui-toggle="isPinning" ng-click="isPinning = !isPinning"></div> 
 			</div>
 		</header>
 
@@ -77,9 +77,9 @@
 
 		<!-- build:js({.tmp,app}) scripts/scripts.js -->
 		<script src="scripts/app.js"></script>
-		<script src="scripts/controllers/main.js"></script>
 		<script src="scripts/controllers/navbar.js"></script>
-		<script src="scripts/controllers/canvas-test.js"></script>
+		<script src="pages/main.js"></script>
+		<script src="pages/canvas-test.js"></script>
 		<!-- endbuild -->
 	</body>
 </html>
