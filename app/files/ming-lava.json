@@ -1,0 +1,12 @@
+{
+	"dependencies" : {
+		"npm" : {
+			"ming-blog" : "*",
+			"ming-gallery" : "*"
+		},
+		"bower" : {
+			"jquery-cookie" : "*",
+			"jquery-masonry" : "*"
+		}
+	}
+}
