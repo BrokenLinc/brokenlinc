@@ -1,8 +1,32 @@
 'use strict';
 
 angular.module('brokenlincApp')
-	.controller('pages/index', function ($scope) {
-		$scope.things = [{
+	.controller('pages/index', function ($scope, $filter) {
+		$scope.searchQuery = null;
+		$scope.bookmarkSortOptions = [
+			'original-order',
+			'title', 
+			'url'
+		];
+		$scope.bookmarkOptions = {
+			sortBy: $scope.bookmarkSortOptions[0]
+		};
+
+		var updateFilter = function() {
+			var dataProp = 'key';
+			var result = [];
+			if($scope.searchQuery) {
+				var matches = $filter("filter")($scope.bookmarks, $scope.searchQuery);;
+				angular.forEach(matches, function(match){
+					result.push('[data-'+dataProp+'='+match[dataProp]+']');
+				});
+				if(result.length == 0) result.push(':not(*)'); //hide everything
+			}
+			$scope.bookmarkOptions.filter = result.join();
+		}
+		$scope.$watch('searchQuery', updateFilter);
+
+		$scope.bookmarks = [{
 			title:'Bootstrap',
 			url:'http://www.getbootstrap.com/',
 			key:'bootstrap',

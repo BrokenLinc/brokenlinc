@@ -1,8 +1,23 @@
-<ul class="grid-bookmarks clearfix">
-	<li ng-repeat="thing in things">
-		<a href="{{thing.url}}"><img src="images/logos/{{thing.key}}.png" alt="{{thing.title}}"/></a>
+<div class="row search-and-sort">
+	<div class="col-sm-8">
+		<div class="input-group input-group-lg">
+			<span class="input-group-addon">search:</span>
+			<input ng-model="searchQuery" type="text" class="form-control" placeholder="ex: &ldquo;Bootstrap&rdquo; "/>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="input-group input-group-lg">
+			<span class="input-group-addon">sort by:</span>
+			<select class="form-control" ng-model="bookmarkOptions.sortBy" ng-options="o for o in bookmarkSortOptions"></select>
+		</div>
+	</div>
+</div>
+
+<ul class="grid-bookmarks clearfix" isotope-container iso-options="bookmarkOptions">
+	<li ng-repeat="item in bookmarks" isotope-item data-key="{{item.key}}">
+		<a href="{{item.url}}"><img src="images/logos/{{item.key}}.png" alt="{{item.title}}"/></a>
 		<ul>
-			<li ng-repeat="link in thing.links"><a href="{{link.url}}">{{link.title}}</a></li>
+			<li ng-repeat="link in item.links"><a href="{{link.url}}">{{link.title}}</a></li>
 		</ul>
 	</li>
 </ul>

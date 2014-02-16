@@ -14,6 +14,11 @@ $accent-highlight:#bf5;
 	width: auto;
 }
 
+html {
+	overflow: -moz-scrollbars-vertical;
+	overflow: scroll;
+}
+
 .ui-hide {
 	display:none;
 }
@@ -22,14 +27,11 @@ body {
 	background: #111;
 	color: #999;
 	font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
-
-	@media(min-width:$desktop-min-width) {
-		padding-top:80px;
-	}
 }
 
 a {
 	color: $accent;
+	cursor: pointer;
 
 	&:hover {
 		color: $accent-highlight;
@@ -37,24 +39,9 @@ a {
 }
 
 header .navbar {
-	.nav {
-		margin-top: 20px;
-
-		@media(max-width:479px) {
-			margin-top:10px;
-		}
-	}
-	.brand {
-		height:60px;
-		width:60px;
-		margin-left:5px;
-		padding-left:0;
-
-		@media(max-width:$tablet-ls-max-width) {
-			height:30px;
-			width:30px;
-			margin-left:10px;
-		}
+	.navbar-brand {
+		height:50px;
+		width:50px;
 
 		.glyph {
 			height:100%;
@@ -82,29 +69,31 @@ svg {
 
 	list-style:none;
 	margin:0;
+	-webkit-padding-start:0;
 
 	> li {
 		float:left;
 		padding-bottom:1em;
 
-		width:percentage(9/50);
-		margin-right:percentage(1/50);
+		//width:150px;
+		height:140px;
+		display:block;
+
+		width:20%;
 
 		@media(min-width:$wide-min-width) {
-			width:percentage(9/60);
-			margin-right:percentage(1/60);
+			height:160px;
 		}
 		@media(max-width:$tablet-p-max-width) {
-			width:percentage(9/30);
-			margin-right:percentage(1/30);
+			width:33%;
+			height:160px;
 		}
 		@media(max-width:$phone-ls-max-width) {
-			width:percentage(9/20);
-			margin-right:percentage(1/20);
+			width:50%;
+			height:120px;
 		}
 
 		> a {
-			display:block;
 
 			&:hover img {
 				border-color:$accent;
@@ -122,6 +111,7 @@ svg {
 			margin:0;
 			text-align:center;
 			height:$line-height;
+			-webkit-padding-start:0;
 		}
 		li {
 			display:inline;
@@ -219,4 +209,67 @@ svg {
 	.shrunk-down {
 		@include transform-origin(50%,89%);
 	}
+}
+
+.search-and-sort .input-group {
+	margin-bottom: 20px;
+}
+
+/* Start: Recommended Isotope styles */
+
+/**** Isotope Filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+.isotope-search .selected {
+	display:none;
+}
+.isotope-search .btn-group {
+	width:0;height:0;overflow:hidden;
 }

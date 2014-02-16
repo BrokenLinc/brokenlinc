@@ -1,6 +1,11 @@
 'use strict';
 
-var app = angular.module('brokenlincApp', ['ngResource', 'ui', 'ui.bootstrap', 'landerson352'])
+var app = angular.module('brokenlincApp', [
+	'ngRoute', 
+	'ngAnimate', 
+	'ui.bootstrap',
+	'iso.directives'
+	])
 	app.config(function ($routeProvider) {
 
 		var page_namespace = 'pages';
@@ -23,4 +28,54 @@ var app = angular.module('brokenlincApp', ['ngResource', 'ui', 'ui.bootstrap', '
 		$routeProvider.otherwise({
 				redirectTo: '/'
 			});
+	});
+	app.animation('.alert', function(){
+		return {
+			leave: function(element, done) {
+				TweenMax.to(element, 0.3, {
+					opacity:0, 
+					scaleX:0.8, 
+					scaleY:0.8,
+					onComplete:function(){
+						TweenMax.to(element, 0.3, {
+							height:0, 
+							'padding-top':0, 
+							'padding-bottom':0, 
+							'margin-top':0, 
+							'margin-bottom':0, 
+							onComplete:done
+						});
+					}
+				});
+			},
+			enter: function(_element, done) {
+				var element = _element.filter('.alert');
+				TweenMax.to(element, 0, {
+					opacity:0,
+					scaleX:0.8, 
+					scaleY:0.8
+				});
+				TweenMax.fromTo(element, 0.3, {
+						height:0, 
+						'padding-top':0, 
+						'padding-bottom':0, 
+						'margin-top':0, 
+						'margin-bottom':0
+					}, {
+						height: element.outerHeight(),
+						'padding-top':element.css('padding-top'),
+						'padding-bottom':element.css('padding-bottom'),
+						'margin-top':element.css('margin-top'),
+						'margin-bottom':element.css('margin-bottom'),
+						onComplete:function(){
+							TweenMax.to(element, 0.3, {
+								opacity:1, 
+								scaleX:1, 
+								scaleY:1,
+								onComplete: done
+							});
+						}
+					});					
+			}
+		};
 	});
