@@ -275,6 +275,7 @@ module.exports = function (grunt) {
             '.htaccess',
             'bower_components/**/*',
             'images/{,*/}*.{gif,webp}',
+            'pages/**/*',
             'files/**/*'
           ]
         }, {
