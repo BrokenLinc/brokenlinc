@@ -38,13 +38,13 @@ module.exports = function (grunt) {
         files: ['test/spec/{,*/}*.coffee'],
         tasks: ['coffee:test']
       },
-      compass: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['compass:server', 'autoprefixer']
+      less: {
+        files: ['<%= yeoman.app %>/styles/{,*/}*.less'],
+        tasks: ['less:server']
       },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['copy:styles', 'autoprefixer']
+        tasks: ['copy:styles']
       },
       livereload: {
         options: {
@@ -56,17 +56,6 @@ module.exports = function (grunt) {
           '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
-      }
-    },
-    autoprefixer: { //vendor prefix css files in TMP
-      options: ['last 1 version'],
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '.tmp/styles/',
-          src: '{,*/}*.css',
-          dest: '.tmp/styles/'
-        }]
       }
     },
     connect: {
@@ -157,24 +146,26 @@ module.exports = function (grunt) {
         }]
       }
     },
-    compass: {
-      options: { //compile sass files from APP into TMP folder (/styles)
-        sassDir: '<%= yeoman.app %>/styles',
-        cssDir: '.tmp/styles',
-        generatedImagesDir: '.tmp/images/generated',
-        imagesDir: '<%= yeoman.app %>/images',
-        javascriptsDir: '<%= yeoman.app %>/scripts',
-        fontsDir: '<%= yeoman.app %>/styles/fonts',
-        importPath: '<%= yeoman.app %>/bower_components',
-        httpImagesPath: '/images',
-        httpGeneratedImagesPath: '/images/generated',
-        httpFontsPath: '/styles/fonts',
-        relativeAssets: false
+    less: {
+      dist: {
+        files: [{ //compile less files from APP into TMP folder (/styles)
+          expand: true,
+          cwd: '<%= yeoman.app %>/styles',
+          src: '*.less',
+          dest: '.tmp/styles',
+          ext: '.css',
+        }],
       },
-      dist: {},
-      server: { //include compass DEBUG info in-development
+      server: { //include less source maps in-development
+        files: [{ //compile less files from APP into TMP folder (/styles)
+          expand: true,
+          cwd: '<%= yeoman.app %>/styles',
+          src: '*.less',
+          dest: '.tmp/styles',
+          ext: '.css',
+        }],
         options: {
-          debugInfo: true
+          sourceMap: true
         }
       }
     },
@@ -304,17 +295,17 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'coffee:dist',
-        'compass:server',
+        'less:server',
         'copy:styles'
       ],
       test: [
         'coffee',
-        'compass',
+        'less',
         'copy:styles'
       ],
       dist: [
         'coffee',
-        'compass:dist',
+        'less:dist',
         'copy:styles',
         'imagemin',
         'svgmin',
@@ -361,7 +352,6 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'concurrent:server',
-      'autoprefixer',
       'connect:livereload',
       'open',
       'watch'
@@ -371,7 +361,6 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
-    'autoprefixer',
     'connect:test',
     'karma'
   ]);
@@ -380,7 +369,6 @@ module.exports = function (grunt) {
     'clean:dist',
     'useminPrepare',
     'concurrent:dist',
-    'autoprefixer',
     'concat',
     'copy:dist',
     'cdnify',

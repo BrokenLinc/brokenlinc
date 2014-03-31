@@ -1,14 +1,14 @@
-@import "compass";
+@import "../bower_components/lesshat/build/lesshat";
 
-$phone-ls-max-width:479px;
-$tablet-p-max-width:767px;
-$tablet-ls-max-width:979px;
-$desktop-min-width:980px;
-$wide-min-width:1200px;
+@phone-ls-max-width:479px;
+@tablet-p-max-width:767px;
+@tablet-ls-max-width:979px;
+@desktop-min-width:980px;
+@wide-min-width:1200px;
 
-$foreground:white;
-$accent:#8c0;
-$accent-highlight:#bf5;
+@foreground:white;
+@accent:#8c0;
+@accent-highlight:#bf5;
 
 @-ms-viewport{
 	width: auto;
@@ -30,11 +30,11 @@ body {
 }
 
 a {
-	color: $accent;
+	color: @accent;
 	cursor: pointer;
 
 	&:hover {
-		color: $accent-highlight;
+		color: @accent-highlight;
 	}
 }
 
@@ -60,12 +60,12 @@ svg {
 		fill:white;
 	}
 	.fill-accent {
-		fill:$accent;
+		fill:@accent;
 	}
 }
 
 .grid-bookmarks {
-	$line-height: 2em;
+	@line-height: 2em;
 
 	list-style:none;
 	padding-left:0;
@@ -82,14 +82,14 @@ svg {
 		height:140px;
 		display:block;
 
-		@media(min-width:$wide-min-width) {
+		@media(min-width:@wide-min-width) {
 			height:160px;
 		}
-		@media(max-width:$tablet-p-max-width) {
+		@media(max-width:@tablet-p-max-width) {
 			width:33%;
 			height:160px;
 		}
-		@media(max-width:$phone-ls-max-width) {
+		@media(max-width:@phone-ls-max-width) {
 			width:50%;
 			height:120px;
 		}
@@ -97,25 +97,25 @@ svg {
 		> a {
 
 			&:hover img {
-				border-color:$accent;
+				border-color:@accent;
 			}
 		}
 		img {
 			width:100%;
-			@include border-radius(4px);
+			.border-radius(4px);
 			border: 2px solid transparent;
 			border-bottom-color: #333;
-			@include transition(all 0.3s);
+			.transition(all 0.3s);
 		}
 		ul {
 			list-style:none;
 			margin:0;
 			text-align:center;
-			height:$line-height;
+			height:@line-height;
 		}
 		li {
 			display:inline;
-			line-height:$line-height;
+			line-height:@line-height;
 
 			&:before {
 				content:" | ";
@@ -139,15 +139,15 @@ svg {
 
 	&.ui-hide {
 		// display:block;
-		@include opacity(0);
+		.opacity(0);
 	}
 
 	.glyph {
 		height:100%;
 
 		/*.group-bl > g {
-			@include scale(0.6);
-			@include transform-origin(72.5px, 60px);
+			.scale(0.6);
+			.transform-origin(72.5px, 60px);
 		}*/
 	}
 }
@@ -166,7 +166,7 @@ svg {
 		background:black;
 		top:0;left:0;
 
-		@include transition(all 3s);
+		.transition(all 3s);
 	}
 	.block-bottom { 
 		height:50%;
@@ -201,13 +201,13 @@ svg {
 		margin-top:-0.89em;
 	}
 	.slid-down {
-		@include translate(0, 73%);
+		.translate(0, 73%);
 	}
 	.shrunk {
-		@include scale(0.5, 0.5);
+		.scale(0.5, 0.5);
 	}
 	.shrunk-down {
-		@include transform-origin(50%,89%);
+		.transform-origin(50%,89%);
 	}
 }
 
