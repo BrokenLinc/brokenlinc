@@ -58,7 +58,7 @@ module.exports = function (grunt) {
         ]
       }
     },
-    autoprefixer: {
+    autoprefixer: { //vendor prefix css files in TMP
       options: ['last 1 version'],
       dist: {
         files: [{
@@ -75,7 +75,7 @@ module.exports = function (grunt) {
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost'
       },
-      livereload: {
+      livereload: { //open localhost to TMP and APP folders
         options: {
           middleware: function (connect) {
             return [
@@ -86,7 +86,7 @@ module.exports = function (grunt) {
           }
         }
       },
-      test: {
+      test: { //open localhost to TMP and TEST folders
         options: {
           middleware: function (connect) {
             return [
@@ -96,7 +96,7 @@ module.exports = function (grunt) {
           }
         }
       },
-      dist: {
+      dist: { //open localhost to DIST folder
         options: {
           middleware: function (connect) {
             return [
@@ -106,13 +106,13 @@ module.exports = function (grunt) {
         }
       }
     },
-    open: {
+    open: { //open site in browser
       server: {
         url: 'http://localhost:<%= connect.options.port %>'
       }
     },
     clean: {
-      dist: {
+      dist: { //remove TMP folder and all NON-GIT files from DIST
         files: [{
           dot: true,
           src: [
@@ -122,13 +122,13 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      server: '.tmp'
+      server: '.tmp' //remove TMP folder
     },
     jshint: {
       options: {
         jshintrc: '.jshintrc'
       },
-      all: [
+      all: [ //run jshint on js files in APP
         'Gruntfile.js',
         '<%= yeoman.app %>/scripts/{,*/}*.js'
       ]
@@ -138,7 +138,7 @@ module.exports = function (grunt) {
         sourceMap: true,
         sourceRoot: ''
       },
-      dist: {
+      dist: { //compile coffee files from APP into TMP (/scripts)
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/scripts',
@@ -147,7 +147,7 @@ module.exports = function (grunt) {
           ext: '.js'
         }]
       },
-      test: {
+      test: { //compile coffee files from TEST into TMP (/spec)
         files: [{
           expand: true,
           cwd: 'test/spec',
@@ -158,7 +158,7 @@ module.exports = function (grunt) {
       }
     },
     compass: {
-      options: {
+      options: { //compile sass files from APP into TMP folder (/styles)
         sassDir: '<%= yeoman.app %>/styles',
         cssDir: '.tmp/styles',
         generatedImagesDir: '.tmp/images/generated',
@@ -172,7 +172,7 @@ module.exports = function (grunt) {
         relativeAssets: false
       },
       dist: {},
-      server: {
+      server: { //include compass DEBUG info in-development
         options: {
           debugInfo: true
         }
@@ -184,7 +184,7 @@ module.exports = function (grunt) {
       dist: {}
     },*/
     rev: {
-      dist: {
+      dist: { //version (cache-bust) files in DIST (SCRIPTS, STYLES, and FONTS)
         files: {
           src: [
             '<%= yeoman.dist %>/scripts/{,*/}*.js',
@@ -209,7 +209,7 @@ module.exports = function (grunt) {
       }
     },
     imagemin: {
-      dist: {
+      dist: { //squash image files from APP into DIST (/images)
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/images',
@@ -219,7 +219,7 @@ module.exports = function (grunt) {
       }
     },
     svgmin: {
-      dist: {
+      dist: { //minify svg files from APP into DIST (/images)
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/images',
@@ -228,7 +228,7 @@ module.exports = function (grunt) {
         }]
       }
     },
-    cssmin: {
+    cssmin: { //minify css files from APP and TMP into DIST (/styles)
       // By default, your `index.html` <!-- Usemin Block --> will take care of
       // minification. This option is pre-configured if you do not wish to use
       // Usemin blocks.
@@ -254,7 +254,7 @@ module.exports = function (grunt) {
           removeEmptyAttributes: true,
           removeOptionalTags: true*/
         },
-        files: [{
+        files: [{ //minify html files from APP into DIST
           expand: true,
           cwd: '<%= yeoman.app %>',
           src: ['*.html', 'views/*.html'],
@@ -265,7 +265,7 @@ module.exports = function (grunt) {
     // Put files not handled in other tasks here
     copy: {
       dist: {
-        files: [{
+        files: [{ //copy generated image files, host config files, and various APP files into DIST
           expand: true,
           dot: true,
           cwd: '<%= yeoman.app %>',
@@ -294,7 +294,7 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      styles: {
+      styles: { //copy css files from APP into TMP
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
