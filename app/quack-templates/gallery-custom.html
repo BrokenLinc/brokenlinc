@@ -1,0 +1,14 @@
+<div class="quack-gallery">
+	<p>This gallery is actually a custom template!</p>
+	<ul class="images">
+		<li ng-repeat="photo in photos">
+			<a class="frame" ng-click="selectPhoto(photo, $event)" ng-href="{{photo.url}}" target="_blank">
+				<img ng-src="{{photo.thumbnail}}"/>
+			</a>
+		</li>
+	</ul>
+	<div class="fullscreen" ng-show="selectedPhoto">
+		<a class="btn-close" ng-click="unselectPhoto()">CLOSE</a>
+		<img ng-src="{{selectedPhoto.fullscreen}}"/>
+	</div>
+</div>

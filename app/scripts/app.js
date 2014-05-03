@@ -4,7 +4,8 @@ var app = angular.module('brokenlincApp', [
 	'ngRoute', 
 	'ngAnimate', 
 	'ui.bootstrap',
-	'iso.directives'
+	'iso.directives',
+	'quack'
 	])
 	app.config(function ($routeProvider) {
 

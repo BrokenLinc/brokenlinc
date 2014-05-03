@@ -16,7 +16,7 @@ angular.module('brokenlincApp')
 			var dataProp = 'key';
 			var result = [];
 			if($scope.searchQuery) {
-				var matches = $filter("filter")($scope.bookmarks, $scope.searchQuery);;
+				var matches = $filter("filter")($scope.bookmarks, $scope.searchQuery);
 				angular.forEach(matches, function(match){
 					result.push('[data-'+dataProp+'='+match[dataProp]+']');
 				});

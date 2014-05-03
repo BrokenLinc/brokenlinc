@@ -10,15 +10,18 @@
 @accent:#8c0;
 @accent-highlight:#bf5;
 
+//IE responsive shim
 @-ms-viewport{
 	width: auto;
 }
 
+//Scrollbars forever!
 html {
 	overflow: -moz-scrollbars-vertical;
 	overflow: scroll;
 }
 
+//Utilities
 .ui-hide {
 	display:none;
 }
@@ -213,6 +216,17 @@ svg {
 
 .search-and-sort .input-group {
 	margin-bottom: 20px;
+}
+
+.alert {
+	position: relative;
+	height:70px;
+}
+.alert button.close {
+	float:none;
+	position:absolute;
+	right:15px;
+	top:15px;
 }
 
 /* Start: Recommended Isotope styles */
